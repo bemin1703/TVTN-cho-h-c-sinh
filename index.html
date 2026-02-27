@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tư Vấn Hướng Nghiệp Chuyên Sâu 2026</title>
+    <style>
+        /* CẤU HÌNH MÀU SẮC CHỦ ĐẠO */
+        :root {
+            --bg-light-blue: #e0f2fe;
+            --primary-blue: #0369a1;
+            --accent-blue: #0ea5e9;
+            --white-card: rgba(255, 255, 255, 0.95);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #bae6fd, #e0f2fe);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* HIỆU ỨNG NGÔI SAO CHUYỂN ĐỘNG */
+        .stars-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: moveStar linear infinite;
+        }
+
+        @keyframes moveStar {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100vh); }
+        }
+
+        /* HEADER */
+        header {
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--primary-blue);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        #welcome-msg {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            background: white;
+            display: inline-block;
+            padding: 8px 25px;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        /* KHUNG TRẮNG (CARDS) */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .box {
+            background: var(--white-card);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: 0.4s;
+            backdrop-filter: blur(5px);
+        }
+
+        .box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2);
+            background: #ffffff;
+        }
+
+        .box h3 { color: var(--primary-blue); font-size: 1.4rem; }
+
+        button {
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        button:hover { background: var(--primary-blue); }
+
+        /* BẢNG TƯ VẤN CHI TIẾT */
+        #ket-qua-chi-tiet {
+            display: none;
+            max-width: 1000px;
+            margin: 30px auto 100px;
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            gap: 30px;
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .info-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f0f9ff;
+            border-radius: 15px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .uni-tag {
+            display: inline-block;
+            background: white;
+            color: #ef4444;
+            padding: 5px 15px;
+            border-radius: 10px;
+            margin: 5px;
+            font-weight: bold;
+            border: 1px solid #fee2e2;
+        }
+
+        .image-content img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--primary-blue);
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #e0f2fe;
+        }
+
+        @media (max-width: 800px) {
+            #ket-qua-chi-tiet { flex-direction: column; margin: 20px; }
+            .image-content { order: -1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars-container" id="stars"></div>
+
+    <header>
+        <h1>Tư Vấn Hướng Nghiệp</h1>
+        <div id="welcome-msg">Chào mừng bạn!</div>
+    </header>
+
+    <div class="container">
+        <div class="box"><h3>🎨 Nghệ thuật & Thiết kế</h3><button onclick="tuVan('art')">Khám phá ngay</button></div>
+        <div class="box"><h3>💻 Công nghệ & AI</h3><button onclick="tuVan('tech')">Khám phá ngay</button></div>
+        <div class="box"><h3>📊 Kinh tế & Marketing</h3><button onclick="tuVan('biz')">Khám phá ngay</button></div>
+        <div class="box"><h3>🩺 Y Dược & Sức khỏe</h3><button onclick="tuVan('med')">Khám phá ngay</button></div>
+        <div class="box"><h3>🌍 Ngôn ngữ & Du lịch</h3><button onclick="tuVan('lang')">Khám phá ngay</button></div>
+        <div class="box"><h3>⚖️ Luật & Pháp lý</h3><button onclick="tuVan('law')">Khám phá ngay</button></div>
+    </div>
+
+    <div id="ket-qua-chi-tiet">
+        <div class="text-content">
+            <h2 id="ten-nhom" style="color: var(--primary-blue); font-size: 2rem;"></h2>
+            <div class="info-section">
+                <span class="label">💎 Tố chất cần có:</span>
+                <span id="to-chat"></span>
+            </div>
+            <div class="info-section">
+                <span class="label">📚 Chi tiết đào tạo:</span>
+                <span id="chi-tiet"></span>
+            </div>
+            <div class="info-section">
+                <span class="label">🏫 Trường đào tạo tốt (Tiêu biểu):</span>
+                <div id="truong-hoc"></div>
+            </div>
+            <button onclick="dongBang()" style="background: #94a3b8; width: auto;">Đóng bảng</button>
+        </div>
+        <div class="image-content">
+            <img id="anh-nganh" src="" alt="">
+        </div>
+    </div>
+
+    <footer>
+        <p><b>Hệ Thống Tư Vấn Hướng Nghiệp Thông Minh 2026</b></p>
+        <p>Hotline: 0813817392 | Email: vnguyenphuc642@gmail.com</p>
+    </footer>
+
+    <script>
+        // TẠO NGÔI SAO NGẪU NHIÊN
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 1 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDuration = Math.random() * 3 + 2 + 's';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // HỎI TÊN
+        let name = prompt("Xin chào! Hãy cho chúng mình biết tên của bạn nhé:", "Học sinh");
+        if(!name) name = "Bạn";
+        document.getElementById('welcome-msg').innerText = "Chào " + name + "! Chúc bạn tìm thấy đam mê của mình.";
+
+        function tuVan(type) {
+            const display = document.getElementById('ket-qua-chi-tiet');
+            display.style.display = 'flex';
+            let data = {};
+
+            if (type === 'tech') {
+                data = {
+                    t: "CÔNG NGHỆ THÔNG TIN (IT) & AI",
+                    tc: "Tư duy logic, khả năng giải quyết vấn đề và sự kiên trì là chìa khóa. Ngành này đòi hỏi bạn phải liên tục cập nhật công nghệ mới vì thế giới số thay đổi từng giây.",
+                    ct: "Bạn sẽ học về Lập trình phần mềm, Trí tuệ nhân tạo, An toàn thông tin và Dữ liệu lớn. Đây là ngành có mức thu nhập hàng đầu hiện nay.",
+                    unis: ["Đại học FPT", "ĐH Bách Khoa", "Học viện Bưu chính Viễn thông", "ĐH Công nghệ thông tin - ĐHQG"],
+                    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500"
+                };
+            } else if (type === 'art') {
+                data = {
+                    t: "THIẾT KẾ ĐỒ HỌA & MỸ THUẬT SỐ",
+                    tc: "Cần khả năng sáng tạo không giới hạn và mắt thẩm mỹ tốt. Bạn sẽ biến những ý tưởng trừu tượng thành những sản phẩm hình ảnh sống động.",
+                    ct: "Học về phối màu, bố cục, vẽ kỹ thuật số và các phần mềm đồ họa chuyên nghiệp. Cơ hội làm việc tại các Agency quảng cáo và Studio lớn.",
+                    unis: ["Đại học FPT", "ĐH Mỹ thuật công nghiệp", "ĐH Kiến trúc", "ĐH Văn Lang"],
+                    img: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=500"
+                };
+            } else if (type === 'biz') {
+                data = {
+                    t: "KINH TẾ & MARKETING",
+                    tc: "Nhạy bén với thị trường, kỹ năng giao tiếp và thuyết phục khách hàng tốt. Bạn là người kết nối sản phẩm tới người tiêu dùng.",
+                    ct: "Nghiên cứu thị trường, chiến lược quảng cáo, quản trị thương hiệu và thương mại điện tử. Đây là ngành cực kỳ năng động và không bao giờ lỗi thời.",
+                    unis: ["ĐH Ngoại thương", "ĐH Kinh tế quốc dân", "Đại học FPT", "ĐH Kinh tế TP.HCM"],
+                    img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500"
+                };
+            } else {
+                data = {
+                    t: "CÁC KHỐI NGÀNH KHÁC",
+                    tc: "Đòi hỏi chuyên môn sâu và sự nhiệt huyết với nghề.",
+                    ct: "Hệ thống đang cập nhật thêm lộ trình chi tiết cho các bạn trong thời gian tới.",
+                    unis: ["ĐH Quốc gia", "ĐH Cần Thơ", "ĐH Đà Nẵng", "ĐH FPT"],
+                    img: "https://picsum.photos/500/300"
+                };
+            }
+
+            document.getElementById('ten-nhom').innerText = data.t;
+            document.getElementById('to-chat').innerText = data.tc;
+            document.getElementById('chi-tiet').innerText = data.ct;
+            document.getElementById('anh-nganh').src = data.img;
+            let uniHtml = "";
+            data.unis.forEach(u => { uniHtml += `<span class="uni-tag">${u}</span>`; });
+            document.getElementById('truong-hoc').innerHTML = uniHtml;
+            display.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function dongBang() {
+            document.getElementById('ket-qua-chi-tiet').style.display = 'none';
+            setTimeout(() => {
+                let check = confirm("Thông tin hướng nghiệp vừa rồi có giúp ích cho bạn không?");
+                if(check) alert("Rất vui được đồng hành cùng bạn trên con đường sự nghiệp!");
+            }, 300);
+        }
+    </script>
+</body>
+</html>
